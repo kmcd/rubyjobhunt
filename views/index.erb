@@ -1,13 +1,6 @@
 <html>
 <head>
-   <style type='text/css'>
-      body, body * { margin: 0; padding: 0; font-weight: normal; }
-      body { margin: 1.6em auto; width: 61%; }
-      body * { font-family: verdana; font-size: 11pt; }
-      h1 { font-size: 1.6em; font-family: arial; color: salmon; }
-      h2 { margin: 1.6em 0; color: gray; }
-      h2 a.job_title { font-size: 2.4em; font-family: arial; }
-   </style>
+   <link rel='stylesheet' type='text/css' href='rubyjobs.css'/>
 </head>
 <body>
    <h1>RubyJobs.heroku.com</h1>
@@ -20,10 +13,10 @@
    <% @jobs.each do |job| %>
       <h2>
          <a class='job_title' href="<%= job.link %>"><%= job.title %></a>
-         posted on <%= job.published.strftime "%A %B %d %Y" %>
-         at <a href="<%= job.base_uri %>"><%= job.base_uri %></a>
+         posted on <%= job.published %>
+         at <a href="<%= job.feed %>"><%= job.feed %></a>
       </h2>
-      <p><%= job.content.gsub /(\n|\n\n+)/, '<br/>' %></p>
+      <p><%= job.posting %></p>
    <% end %>
 </body>
 </html>

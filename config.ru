@@ -1,2 +1,2 @@
-require 'rubyjobs'
+require 'webapp'
 run Sinatra::Application
