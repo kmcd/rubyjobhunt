@@ -1,5 +1,29 @@
-<% @jobs.each do |job| %>
-<pre>
-   <%= job.content  %>
-</pre>
-<% end %>
+<html>
+<head>
+   <style type='text/css'>
+      body, body * { margin: 0; padding: 0; font-weight: normal; }
+      body { margin: 1.6em auto; width: 61%; }
+      body * { font-family: verdana; font-size: 11pt; }
+      h1 { font-size: 1.6em; font-family: arial; color: salmon; }
+      h2 { margin: 1.6em 0; color: gray; }
+      h2 a.job_title { font-size: 2.4em; font-family: arial; }
+   </style>
+</head>
+<body>
+   <h1>RubyJobs.heroku.com</h1>
+   
+   <form action='/search'>
+      <input type='text' name='q'/>
+      <button>Search</button>
+   </form>
+   
+   <% @jobs.each do |job| %>
+      <h2>
+         <a class='job_title' href="<%= job.link %>"><%= job.title %></a>
+         posted on <%= job.published.strftime "%A %B %d %Y" %>
+         at <a href="<%= job.base_uri %>"><%= job.base_uri %></a>
+      </h2>
+      <p><%= job.content.gsub /(\n|\n\n+)/, '<br/>' %></p>
+   <% end %>
+</body>
+</html>
