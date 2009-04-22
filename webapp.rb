@@ -2,12 +2,10 @@
 
 require 'rubygems'
 require 'sinatra'
-require 'feed_tools'
-require 'rubyjob'
+require 'lib/rubyjob'
 
 get '/' do
-  # Render list of latest feed items
-  @jobs = RubyJob.latest
+  @jobs = RubyJob::Post.all
   erb :index
 end
 
