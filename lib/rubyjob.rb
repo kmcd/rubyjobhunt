@@ -1,10 +1,10 @@
 require 'rake'
 require 'dm-core'
+# TODO: simplify lib loading
 require "#{Dir.pwd}/lib/rubyjob/post"
 require "#{Dir.pwd}/lib/rubyjob/feed"
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://rubyjobs.db')
+DataMapper.setup(:default, 'sqlite3::memory')
 DataMapper::Logger.new(STDOUT, 0)
 
-# FIXME: If there are no tables, create & populate
 DataMapper.auto_upgrade!

@@ -5,11 +5,11 @@ require 'sinatra'
 require 'lib/rubyjob'
 
 get '/' do
-  @jobs = RubyJob::Post.all
+  @jobs = JobPost.latest
   erb :index
 end
 
 get '/search' do
-  @jobs = RubyJob.search(params[:q])
-  erb :index
+  @jobs = JobPost.search(params[:q])
+  erb :results
 end
