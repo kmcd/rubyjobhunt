@@ -1,4 +1,4 @@
-# Feed agregator for ruby jobs
+# Ruby job search engine
 
 require 'rubygems'
 require 'sinatra'
