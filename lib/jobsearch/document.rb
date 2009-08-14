@@ -6,15 +6,15 @@ require 'feed_tools'
 class Document
   include DataMapper::Resource
   
-  property :id,         Serial
-  property :url,        String, :length => 255
-  property :title,      String, :length => 255
-  property :date,       Date
-  property :content,    Text
+  property :id, Serial
+  property :url, String, :length => 255
+  property :title, String, :length => 255
+  property :date, Date
+  property :content, Text
   property :created_on, Date
   
-  after :save,  :index
   before :save, :strip_markup
+  after :save, :index
   
   # Takes a FeedTools::FeedItem and saves to database
   def self.create(feed_entry)
@@ -35,13 +35,12 @@ class Document
   private
   
   def strip_markup
-    attribute_set :title,   strip_markup_from(title)
+    attribute_set :title, strip_markup_from(title)
     attribute_set :content, strip_markup_from(content)
   end
   
   def strip_markup_from(content)
-    if content
-      FeedTools::HtmlHelper.convert_html_to_plain_text(content).gsub /(\W|\d)/, ' '
-    end
+    return unless content
+    FeedTools::HtmlHelper.convert_html_to_plain_text(content).gsub /(\W|\d)/, ' '
   end
 end

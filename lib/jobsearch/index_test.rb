@@ -1,19 +1,28 @@
 require 'test_helper'
+require 'index'
 
 class IndexTest < Test::Unit::TestCase
-  test "should extract keywords from content" do
-    flunk
+  def setup
+    Index.all.destroy!
   end
   
-  test "should have unique keywords" do
-    flunk
+  should "store keyword and its document id" do
+    Index.store 1, 'foo'
+    assert_equal 1.to_s, Index.first(:word => 'foo').doc_ids
   end
   
-  test "should store keyword and its document id" do
-    flunk
+  should "extract keywords from content" do
+    Index.store 1, 'foo and bar'
+    assert_equal 'foo bar', Index.all.map {|i| i.word }.join(' ')
   end
   
-  test "should update keyword if it appears in multiple documents " do
-    flunk
+  should "have unique keyword" do
+    2.times { Index.store(1, 'foo') }
+    assert_equal 1, Index.all.size
+  end
+  
+  should "update keyword if it appears in multiple documents " do
+    [1, 2].each {|doc_id| Index.store(doc_id, 'foo') }
+    assert_equal '1,2', Index.first(:word => 'foo').doc_ids
   end
 end

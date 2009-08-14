@@ -18,18 +18,15 @@ class Index
     keywords_from(content).each {|keyword| create_or_update(doc_id, keyword) }
   end
   
-  private
-  
   def self.keywords_from(content)
     content.gsub(STOP_WORDS, '').split.map {|word| word.downcase }.uniq
   end
   
   def self.create_or_update(doc_id, keyword)
-    existing_keyword = find :word => keyword
-    
-    if existing_keyword
+    # TODO: investigate algorithmic impact of doing a find on *every* insert
+    if existing_keyword = first(:word => keyword)
       existing_keyword.update_doc_ids(doc_id)
-    else update(doc_id, keyword)
+    else
       create(:word => keyword, :doc_ids => doc_id)
     end
   end
