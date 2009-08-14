@@ -5,9 +5,6 @@ require 'rubygems'
 require 'redgreen'
 require 'flexmock/test_unit'
 
-# Libs under test
-require 'feed'
-
 # Custom test helpers
 
 # From http://github.com/sandal/rbp/blob/master/testing/test_unit_extensions.rb
