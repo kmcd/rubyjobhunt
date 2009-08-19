@@ -1,3 +1,5 @@
+require 'lib/db_config'
+
 # SYNOPSIS
 # 
 #   INDEX FORMAT
@@ -13,6 +15,15 @@ class Index
   property :id,         Serial
   property :word,       String, :key => true
   property :doc_ids,    String
+  
+  # TODO: move to 
+  def self.search(params=nil)
+    if params
+      # Full text boolean search ordered by date
+    else
+      # All jobs ordered by date
+    end
+  end
   
   def self.store(doc_id, content)
     keywords_from(content).each {|keyword| create_or_update(doc_id, keyword) }
