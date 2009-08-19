@@ -19,4 +19,8 @@ class Feed
       FeedTools::Feed.open(feed_url)
     end
   end
+  
+  def self.job_posts
+    all.map {|feed| feed.entries }.flatten
+  end
 end

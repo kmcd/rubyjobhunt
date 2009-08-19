@@ -6,9 +6,7 @@ require 'redgreen'
 require 'flexmock/test_unit'
 
 # Load our libs
-require 'lib/document'
-require 'lib/feed'
-require 'lib/index'
+require 'lib/rubyjobhunt'
 
 # Custom test helpers
 

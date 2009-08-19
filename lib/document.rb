@@ -3,7 +3,6 @@ require 'index'
 require 'dm-timestamps'
 require 'feed_tools'
 
-
 class Document
   include DataMapper::Resource
   

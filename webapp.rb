@@ -1,9 +1,9 @@
 # Ruby job search engine
 require 'rubygems'
 require 'sinatra'
-require 'lib/index'
+require 'lib/rubyjobhunt'
 
 get '/' do
-  @jobs = Index.search params[:q]
+  @jobs = Document.all
   erb :results
 end
