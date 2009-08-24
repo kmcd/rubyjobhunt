@@ -3,10 +3,11 @@
       <title>RubyJobHunt</title>
       <style type='text/css'>
          body     { margin-right: 19%; }
-         h2       { margin-top: 4em; }
+         h2       { margin-top: 2.4em; }
          
          body *   { font: normal normal 10pt verdana, sans-serif; }
          h1, h1 * { font: normal bold   30pt courier, serif; }
+         a        { text-decoration: none; }
          
          h1       { color: lightgray; }
          h1 span  { color: red; }
@@ -26,11 +27,7 @@
             <a href='<%= job.url %>'><%= job.title %></a> 
             <span><%= job.created_on.strftime '%a %d %b' %></span>
          </h2>
-         <p><%= job.content %></p>
+         <p><%= job.content[0..400] rescue nil %> &hellip; </p>
       <% end %>
-      
-      <p>
-         Page <a href='#'>1</a> | <a href='#'>2</a> | <a href='#'>3</a>
-      </p>
    </body>
 </html>

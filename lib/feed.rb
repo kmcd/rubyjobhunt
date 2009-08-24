@@ -10,8 +10,9 @@ require 'feed_tools'
 
 class Feed
   URLS = %w(
-  http://feedproxy.google.com/jobsrubynow 
-  http://railswork.com/jobs/all.rss )
+    http://feedproxy.google.com/jobsrubynow
+    http://railswork.com/jobs/all.rss )
+    # TODO: investigate why rails work isnt't indexing correctly
 
   def self.all
     URLS.map do |feed_url|
