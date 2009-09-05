@@ -4,6 +4,6 @@ require 'sinatra'
 require 'lib/rubyjobhunt'
 
 get '/' do
-  @jobs = Document.all
+  @jobs = Document.latest
   erb :results
 end

@@ -5,7 +5,6 @@ class DocumentTest < Test::Unit::TestCase
   
   def setup
     @doc = Document.new
-    flexmock(Index, :store => true)
   end
   
   test "should have a url" do
@@ -30,5 +29,17 @@ class DocumentTest < Test::Unit::TestCase
   test "should index content & title" do
     Index.should_receive(:store).with('foo bar')
     @doc.update_attributes(:content => 'foo', :title => 'bar')
+  end
+end
+
+class CurrentDocumentTest < Test::Unit::TestCase 
+  test "should fetch jobs posted today" do
+    # d = Document.create :date => Date.today
+    # assert_equal [d.id], Document.today
+  end
+  
+  test "should not fetch jobs posted before today" do
+    # Document.create :date => Date.today - 1
+    # assert_equal [], Document.today
   end
 end

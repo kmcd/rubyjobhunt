@@ -4,11 +4,19 @@ require 'test/unit'
 require 'rubygems'
 require 'redgreen'
 require 'flexmock/test_unit'
+require 'dm-core'
 
-# Load our libs
+ENV['rubyjobhunt_env'] = 'test'
 require 'lib/rubyjobhunt'
+DataMapper.auto_migrate!
 
 # Custom test helpers
+
+class Test::Unit::TestCase
+  def teardown
+    # [ Document, Index, Feed ].each {|model| model.all.destroy! }
+  end
+end
 
 # From http://github.com/sandal/rbp/blob/master/testing/test_unit_extensions.rb
 module Test::Unit

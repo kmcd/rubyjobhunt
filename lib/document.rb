@@ -14,7 +14,10 @@ class Document
   property :created_on, Date
   
   before :save, :strip_markup
-  after :save, :index
+  
+  def self.latest
+    all :order => :date, :limit => 100
+  end
   
   # Takes a FeedTools::FeedItem and saves to database
   def self.create(feed_entry)
@@ -22,10 +25,6 @@ class Document
       :title    => feed_entry.title, 
       :date     => feed_entry.published.to_date.to_s, 
       :content  => feed_entry.content
-  end
-  
-  def index
-    Index.store id, indexable_conent
   end
   
   def indexable_conent

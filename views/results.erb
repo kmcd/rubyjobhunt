@@ -3,7 +3,7 @@
       <title>RubyJobHunt</title>
       <style type='text/css'>
          body     { margin-right: 19%; }
-         h2       { margin-top: 2.4em; }
+         /* h2       { margin-top: 2.4em; } */
          
          body *   { font: normal normal 10pt verdana, sans-serif; }
          h1, h1 * { font: normal bold   30pt courier, serif; }
@@ -17,17 +17,18 @@
    <body>
       <h1><span>Ruby</span>JobHunt.com</h1>
       
-      <form action='/'>
-         <input type='text' name='q'/>
-         <button>Search</button>
-      </form>
-      
       <% @jobs.each do |job| %>
          <h2>
             <a href='<%= job.url %>'><%= job.title %></a> 
             <span><%= job.created_on.strftime '%a %d %b' %></span>
          </h2>
-         <p><%= job.content[0..400] rescue nil %> &hellip; </p>
+         <!-- <p><%= job.content[0..350] rescue nil %> &hellip; </p> -->
       <% end %>
+      
+      <ol>
+         <li><a href=''>Fri 04 Sep</a></li>
+         <li><a href=''>Thu 03 Sep</a></li>
+         <li><a href=''>Wed 02 Sep</a></li>
+      </ol>
    </body>
 </html>

@@ -1,6 +1,10 @@
 require 'rubygems'
 require 'dm-core'
 
-DataMapper.setup :default, 
+def environment_db
+  "rubyjobhunt_#{ ENV['rubyjobhunt_env'] || 'development'}"
+end
+
+DataMapper.setup :default,
   :adapter => "postgres", 
-  :database => "rubyjobhunt_development"
+  :database => environment_db
