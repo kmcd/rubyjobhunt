@@ -7,3 +7,8 @@ get '/' do
   @jobs = Document.latest
   erb :results
 end
+
+get '/feed.rss' do
+  @jobs = Document.latest
+  builder :results
+end

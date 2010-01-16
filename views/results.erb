@@ -9,10 +9,14 @@
          a        { text-decoration: none; }
          dt       { color: gray; font-style: italic; }
       </style>
+      <link type="application/rss+xml" href="/feed.rss" title="Ruby and Rails jobs: rubyjobhunt.heroku.com" rel="alternate"/>
    </head>
    <body>
       <h1><span>Ruby</span>JobHunt.com</h1>
-      <p>Your source for all Ruby and Ruby on Rails jobs.</p>
+      <p>
+         Your source for all Ruby and Ruby on Rails jobs.
+         <a href="/feed.rss">RSS feed</a>
+      </p>
       
       <% @jobs.group_by {|job| job.date }.each do |jobs_by_date| %>
          <dl>
