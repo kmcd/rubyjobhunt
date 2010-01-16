@@ -1,7 +1,9 @@
 require 'db_config'
 require 'dm-timestamps'
 require 'feed_tools'
+require 'active_support'
 
+# TODO: rename to JobPost
 class Document
   include DataMapper::Resource
   
@@ -14,25 +16,20 @@ class Document
   
   before :save, :strip_markup
   
-  # TODO: remove limit and group by date
   def self.latest
-    all :order => :date, :limit => 100
+    all :order => :date, :order => [ :date.desc ], :date.gt => 6.weeks.ago
   end
   
-  # Takes a FeedTools::FeedItem and saves to database
   def self.create(feed_entry)
-    new.update_attributes :url => feed_entry.guid,
+    new( :url => feed_entry.link,
       :title    => feed_entry.title, 
       :date     => feed_entry.published.to_date.to_s, 
-      :content  => feed_entry.content
-  end
-  
-  def indexable_conent
-    [content, title].join ' '
+      :content  => feed_entry.content ).save
   end
   
   private
   
+  # TODO: use a gem for html stripping
   def strip_markup
     attribute_set :title, strip_markup_from(title)
     attribute_set :content, strip_markup_from(content)

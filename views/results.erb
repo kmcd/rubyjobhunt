@@ -2,33 +2,27 @@
    <head>
       <title>RubyJobHunt</title>
       <style type='text/css'>
-         body     { margin-right: 19%; }
-         /* h2       { margin-top: 2.4em; } */
-         
          body *   { font: normal normal 10pt verdana, sans-serif; }
          h1, h1 * { font: normal bold   30pt courier, serif; }
-         a        { text-decoration: none; }
-         
-         h1       { color: lightgray; }
+         h1       { color: lightgray; margin-bottom: 0; }
          h1 span  { color: red; }
-         h2 span  { color: gray; }
+         a        { text-decoration: none; }
+         dt       { color: gray; font-style: italic; }
       </style>
    </head>
    <body>
       <h1><span>Ruby</span>JobHunt.com</h1>
+      <p>Your source for all Ruby and Ruby on Rails jobs.</p>
       
-      <% @jobs.each do |job| %>
-         <h2>
-            <a href='<%= job.url %>'><%= job.title %></a> 
-            <span><%= job.created_on.strftime '%a %d %b' %></span>
-         </h2>
-         <!-- <p><%= job.content[0..350] rescue nil %> &hellip; </p> -->
+      <% @jobs.group_by {|job| job.date }.each do |jobs_by_date| %>
+         <dl>
+            <dt><%= jobs_by_date.first.strftime '%A %d %B' %></dt>
+            <% jobs_by_date.last.each do |job| %>
+               <dd>
+                  <a href="<%= job.url %>"><%= job.title %></a>
+               </dd>
+            <% end %>
+         </dl>
       <% end %>
-      
-      <ol>
-         <li><a href=''>Fri 04 Sep</a></li>
-         <li><a href=''>Thu 03 Sep</a></li>
-         <li><a href=''>Wed 02 Sep</a></li>
-      </ol>
    </body>
 </html>
