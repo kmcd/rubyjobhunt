@@ -1,3 +1,3 @@
 $:.unshift File.dirname(__FILE__)
-require 'document'
+require 'job_post'
 require 'feed'

@@ -14,7 +14,7 @@ DataMapper.auto_migrate!
 
 class Test::Unit::TestCase
   def teardown
-    # [ Document, Index, Feed ].each {|model| model.all.destroy! }
+    # [ JobPost, Index, Feed ].each {|model| model.all.destroy! }
   end
 end
 

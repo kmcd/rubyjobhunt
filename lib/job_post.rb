@@ -4,11 +4,11 @@ require 'feed_tools'
 require 'active_support'
 
 # TODO: rename to JobPost
-class Document
+class JobPost
   include DataMapper::Resource
   
   property :id, Serial
-  property :url, String, :length => 255
+  property :url, String, :length => 255, :required => true, :unique => true
   property :title, String, :length => 255
   property :date, Date
   property :content, Text

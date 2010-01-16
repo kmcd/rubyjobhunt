@@ -1,10 +1,10 @@
 require File.dirname(__FILE__) + '/test_helper'
 
-class DocumentTest < Test::Unit::TestCase
+class JobPostTest < Test::Unit::TestCase
   MARKUP = '<p>We need ruby devs</p> like now!'
   
   def setup
-    @doc = Document.new
+    @doc = JobPost.new
   end
   
   test "should have a url" do
@@ -32,14 +32,14 @@ class DocumentTest < Test::Unit::TestCase
   end
 end
 
-class CurrentDocumentTest < Test::Unit::TestCase 
+class CurrentJobPostTest < Test::Unit::TestCase 
   test "should fetch jobs posted today" do
-    # d = Document.create :date => Date.today
-    # assert_equal [d.id], Document.today
+    # d = JobPost.create :date => Date.today
+    # assert_equal [d.id], JobPost.today
   end
   
   test "should not fetch jobs posted before today" do
-    # Document.create :date => Date.today - 1
-    # assert_equal [], Document.today
+    # JobPost.create :date => Date.today - 1
+    # assert_equal [], JobPost.today
   end
 end

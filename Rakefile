@@ -11,7 +11,7 @@ end
 
 desc 'Fetch all feeds and index their job posts'
 task :index_jobs do
-  Feed.job_posts.each {|job_post| Document.create(job_post) }
+  Feed.job_posts.each {|job_post| JobPost.create(job_post) }
 end
 
 desc 'Wipe db data & re-create schema'
