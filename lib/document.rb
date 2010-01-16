@@ -1,5 +1,4 @@
 require 'db_config'
-require 'index'
 require 'dm-timestamps'
 require 'feed_tools'
 
@@ -15,6 +14,7 @@ class Document
   
   before :save, :strip_markup
   
+  # TODO: remove limit and group by date
   def self.latest
     all :order => :date, :limit => 100
   end
