@@ -19,6 +19,6 @@ task :migrate_db do
   DataMapper.auto_migrate!
 end
 
-task :cron => :environment do
-  Feed.job_posts.each {|job_post| JobPost.create(job_post) }
+desc 'Daily tasks: index feeds'
+task :cron => :index_jobs do
 end
