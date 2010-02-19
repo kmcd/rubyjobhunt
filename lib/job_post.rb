@@ -14,6 +14,7 @@ class JobPost
   property :content, Text
   property :created_on, Date
   
+  validates_is_unique :url
   before :save, :strip_markup
   
   def self.latest
