@@ -3,9 +3,9 @@ require 'dm-timestamps'
 require 'feed_tools'
 require 'active_support'
 
-# TODO: rename to JobPost
 class JobPost
   include DataMapper::Resource
+  WEEKS_TO_INDEX = 2.weeks.ago
   
   property :id, Serial
   property :url, String, :length => 255, :required => true, :unique => true
@@ -17,7 +17,11 @@ class JobPost
   before :save, :strip_markup
   
   def self.latest
-    all :order => [ :date.desc ], :date.gt => 3.weeks.ago
+    all :order => [ :date.desc ], :created_on.gt => WEEKS_TO_INDEX
+  end
+  
+  def self.delete_old
+    all(:created_on.lt => WEEKS_TO_INDEX).map &:destroy
   end
   
   def self.create(feed_entry)

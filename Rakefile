@@ -21,4 +21,5 @@ end
 
 desc 'Daily tasks: index feeds'
 task :cron => :index_jobs do
+  JobPost.delete_old
 end
