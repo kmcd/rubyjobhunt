@@ -32,6 +32,7 @@ class JobPost
       :title    => feed_entry.title, 
       :date     => feed_entry.published.to_date.to_s, 
       :content  => feed_entry.content ).save
+    rescue nil
   end
   
   private
