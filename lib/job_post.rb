@@ -30,13 +30,18 @@ class JobPost
   def self.create(feed_entry)
     new( :url => feed_entry.link,
       :title    => feed_entry.title, 
-      :date     => feed_entry.published.to_date.to_s, 
+      :date     => date_for(feed_entry), 
       :content  => feed_entry.content ).save
     rescue Exception => ex
       puts "Error creating #{feed_entry.link} : #{ex.message}"
   end
   
   private
+  
+  def date_for(feed_entry)
+    return 0.minutes.ago unless feed_entry.published
+    feed_entry.published.to_date.to_s
+  end
   
   # TODO: use a gem for html stripping
   def strip_markup
