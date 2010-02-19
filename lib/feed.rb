@@ -9,7 +9,11 @@ require 'feed_tools'
 #   => [ #<Feed>, #<Feed>, ... ]
 
 class Feed
+  # TODO: move to yaml file
   URLS = %w(
+    http://www.cwjobs.co.uk/JobSearch/RSS.aspx?Keywords=ruby
+    http://www.totaljobs.com/JobSearch/RSSLink.aspx?Keywords=ruby
+    http://railsjobs.in/jobs.atom
     http://railswork.com/jobs/all.rss 
     http://feeds.feedburner.com/rubyjobsireland
     http://railswork.com/jobs/all.rss
