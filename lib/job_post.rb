@@ -17,7 +17,7 @@ class JobPost
   before :save, :strip_markup
   
   def self.latest
-    all :order => [ :date.desc ], :date.gt => 6.weeks.ago
+    all :order => [ :date.desc ], :date.gt => 3.weeks.ago
   end
   
   def self.create(feed_entry)
