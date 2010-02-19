@@ -32,7 +32,8 @@ class JobPost
       :title    => feed_entry.title, 
       :date     => feed_entry.published.to_date.to_s, 
       :content  => feed_entry.content ).save
-    rescue nil
+    rescue Exception => ex
+      puts "Error creating #{feed_entry.link} : #{ex.message}"
   end
   
   private
