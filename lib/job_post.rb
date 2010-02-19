@@ -38,7 +38,7 @@ class JobPost
   
   private
   
-  def date_for(feed_entry)
+  def self.date_for(feed_entry)
     return 0.minutes.ago unless feed_entry.published
     feed_entry.published.to_date.to_s
   end
