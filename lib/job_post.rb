@@ -1,5 +1,6 @@
 require 'db_config'
 require 'dm-timestamps'
+require 'dm-validations'
 require 'feed_tools'
 require 'active_support'
 
@@ -15,6 +16,7 @@ class JobPost
   property :created_on, Date
   
   validates_is_unique :url
+  
   before :save, :strip_markup
   
   def self.latest
