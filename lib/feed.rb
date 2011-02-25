@@ -14,9 +14,7 @@ class Feed
     http://www.cwjobs.co.uk/JobSearch/RSS.aspx?Keywords=ruby
     http://www.totaljobs.com/JobSearch/RSSLink.aspx?Keywords=ruby
     http://railsjobs.in/jobs.atom
-    http://railswork.com/jobs/all.rss 
     http://feeds.feedburner.com/rubyjobsireland
-    http://railswork.com/jobs/all.rss
     http://jobs.37signals.com/categories/2/jobs.rss
     http://feedproxy.google.com/jobsrubynow
     http://sfbay.craigslist.org/search/jjj?query=ruby&amp;addOne=telecommuting&amp;format=rss
